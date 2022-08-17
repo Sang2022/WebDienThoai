@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+    {#    <style>#}
+    {#        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+    {#        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+    {#    </style>#}
+
+    {#    <div class="example-wrapper">#}
+    {#        <h1>Hello {{ controller_name }}! ✅</h1>#}
+
+    {#        This friendly message is coming from:#}
+    {#        <ul>#}
+    {#            <li>Your controller at <code><a href="{{ 'C:/Users/ADMIN/Demoweb1/src/Controller/ProductController.php'|file_link(0) }}">src/Controller/ProductController.php</a></code></li>#}
+    {#            <li>Your template at <code><a href="{{ 'C:/Users/ADMIN/Demoweb1/templates/product/index.html.twig'|file_link(0) }}">templates/product/index.html.twig</a></code></li>#}
+    {#        </ul>#}
+    {#    </div>#}
+    <div class="bs-example" data-example-id="striped-table">
+
+
+                <table class="table " style="color: #DDDDDD; background-color:" >
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Image</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <th scope="row">{{ product.id }}</th>
+                            <td>{{ product.ProductName }}</td>
+                            <td>{{ product.price }} VND</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.date|date('F j,Y, g:i a') }}</td>
+                            <td><a href="{{ path('product_details', {'id':product.id})}}"><img src="{{ asset('uploads/image/'~product.productImage) }}" class="btn" height="180px" width="220px"></a></td>
+                            <td>
+
+                                <a href="{{ path('product_edit', {'id':product.id})}}" class="btn btn-success">Edit</a>
+                                <a href="{{ path('product_delete', {'id':product.id})}}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    </ul>
+{% endblock %}

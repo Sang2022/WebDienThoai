@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+{#    <style>#}
+{#        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+{#        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+{#    </style>#}
+
+{#    <div class="example-wrapper">#}
+{#        <h1>Hello {{ controller_name }}! ✅</h1>#}
+
+{#        This friendly message is coming from:#}
+{#        <ul>#}
+{#            <li>Your controller at <code><a href="{{ 'C:/Users/ADMIN/Demoweb1/src/Controller/ProductController.php'|file_link(0) }}">src/Controller/ProductController.php</a></code></li>#}
+{#            <li>Your template at <code><a href="{{ 'C:/Users/ADMIN/Demoweb1/templates/product/index.html.twig'|file_link(0) }}">templates/product/index.html.twig</a></code></li>#}
+{#        </ul>#}
+{#    </div>#}
+
+{#    <div class="row">#}
+{#        <div class="col-sm-4"> <div class="bs-example" data-example-id="striped-table">#}
+{#                <table class="table table-striped">#}
+{#                    <thead>#}
+{#                    <tr>#}
+{#                        <th>##</th>#}
+{#                        <th>Category</th>#}
+{#                    </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#                    {% for category in categories %}#}
+{#                        <tr>#}
+{#                            <th scope="row">{{ category.id }}</th>#}
+{#                            <td><a href="{{ path('productByCat', {'id':category.id})}}">{{ category.catname }}</a></td>#}
+{#                            <td>#}
+{#                                <a href="{{ path('productByCat', {'id':category.id})}}" class="btn btn-success">View</a>#}
+{#                                <a href="#" class="btn btn-default">Edit</a>#}
+{#                                <a href="{{ path('product_delete', {'id':category.id})}}"class="btn btn-danger">Delete</a>#}
+{#                            </td>#}
+{#                        </tr>#}
+{#                    {% endfor %}#}
+{#                    </tbody>#}
+{#                </table>#}
+{#            </div></div>#}
+{#    Hinh intro#}
+    <head>
+        <style>
+            table, td, th {
+                border: 1px solid #FFFFFF;
+                text-align: left;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                padding: 15px;
+            }
+        </style>
+    </head>
+    </div>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="box-sizing: border-box; padding: 0; margin: 0;">
+        <div class="carousel-inner" style="max-width: 1200px; margin: 0 auto; padding: 50px 40px;
+   width: 100%; position: relative;">
+            <div class="carousel-item">
+                <img src={{ asset ('uploads/image/intro.jpg') }} class="d-block w-100" style="width: 1200px; height: 500px;" alt="...">
+
+            </div>
+            <div class="carousel-item active">
+                <img src={{ asset ('uploads/image/mana.jpg') }} class="d-block w-100" style="width: 1200px; height: 500px;" alt="...">
+
+            </div>
+            <div class="carousel-item">
+                <img src={{ asset ('uploads/image/nuba.jpg') }} class="d-block w-100" style="width: 1200px; height: 500px;" alt="...">
+
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
+        <div class="col-sm-12"> <div class="bs-example" data-example-id="striped-table">
+                <table class="table " style="color: #DDDDDD; background-color:" >
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Image</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <th scope="row">{{ product.id }}</th>
+                            <td>{{ product.ProductName }}</td>
+                            <td>{{ product.price }} VND</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.date|date('F j,Y, g:i a') }}</td>
+                            <td><a href="{{ path('product_details', {'id':product.id})}}"><img src="{{ asset('uploads/image/'~product.productImage) }}" class="btn" height="180px" width="220px"></a></td>
+                            <td>
+                                <a href="{{ path('product_details', {'id':product.id})}}" class="btn btn-success">View</a>
+                                <a href="{{ path('product_edit', {'id':product.id})}}" class="btn btn-primary">Edit</a>
+                                <a href="{{ path('product_delete', {'id':product.id})}}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div></div>
+    </div>
+{% endblock %}
